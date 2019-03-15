@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+
+{% block style %}
+    {{ block.super }}
+
+    img {
+    max-width: 100%;
+    height: auto;
+    }
+
+    .detail_image
+    {
+    width: 600px;
+    height: 600px;
+
+    float: left;
+    padding: 80px;
+    }
+
+    .details
+    {
+    float:left;
+    padding: 10px;
+    padding-left: 40px;
+    color:white;
+    }
+
+
+    .rooms
+    {
+    clear: both;
+    padding: 10px;
+    }
+
+    .empty-div
+    {
+    clear: both;
+    }
+    .row1{
+      color:white;
+    }
+    .badge
+    {
+    background-color:#e02d0d;
+    }
+    .details badge badge-primary badge{
+      color:black;
+    }
+{% endblock %}
+
+{% block content %}
+    <h1>Details view</h1>
+    <div class="detail_image">
+        {% if devs.employee.image %}
+            <img src="{{ devs.employee.image.url }}">
+        {% endif %}
+
+    </div>
+
+
+    <div class="details">
+
+        <h1><span class="badge badge-success badge">  {{ devs.skil_level }}</span></h1>
+
+        <div class="row">
+            <div class="col-md-10">
+                <h3><b>Name:</b> {{ devs.employee.first_name }} {{ devs.employee.last_name }}</h3>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-10">
+                <h3><b>Work experience:</b> {{ devs.employee.work_experience }} </h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-10">
+                <h3><b>Technology:</b>{% for name in technologys %} {{ name.name }} {% endfor %} </h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-10">
+                <h3><b>Freamworks:</b> {% for name in technologys_type %} {{ name.name }} {% endfor %}  </h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-10">
+                <h3><b>Other skils:</b> {% for name in others %} {{ name.name }} {% endfor %}  </h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h3><i class="fa fa-envelope" aria-hidden="true" style="color: #cc181e;"></i>
+                    <b>Email:</b> {{ devs.employee.email }}</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-10">
+                <h3><i class="fa fa-globe" aria-hidden="true" style="color: #2793e8;"></i> <a href="{{ hotel.url }}">Upwork</a>
+                </h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-10">
+
+                <h3><i class="fa fa-phone" aria-hidden="true" style="color: #559900;"></i>
+                    <b>Phone:</b> {{ devs.employee.phone }}</h3>
+            </div>
+        </div>
+
+    </div>
+     <div class="row1">
+            <div class="col-md-10">
+                <h3><b></b> {{ devs.employee.bio }} </h3>
+            </div>
+        </div>
+
+
+
+{% endblock %}

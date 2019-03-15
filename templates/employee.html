@@ -1,0 +1,195 @@
+{% extends 'base.html' %}
+
+{% block style %}
+    {{ block.super }}
+
+    img {
+    max-width: 100%;
+    height: auto;
+    }
+
+    .image_mrr
+    {
+    width: 200px;
+    height: 200px;
+    float: left;
+    padding: 20px;
+    margin-bottom:20px;
+    }
+
+    .emp_detail
+    {
+    float:bottom;
+    padding: 20px;
+    font-family: Arial;
+
+    }
+
+    .empty-div
+    {
+    clear: both;
+    }
+    .container{
+    margin-top:20px;
+    float:right;
+    height:200px;
+    display: block;
+    }
+    .filter{
+    float:left;
+    }
+
+{% endblock %}
+
+{% block content %}
+
+
+
+
+    {% for dev in devs %}
+
+        <a href="{% url 'employee_details' dev.id %}" style="color: #ffebf8">
+            <div class="container">
+
+                <div class="row">
+                    <div class="image_mrr">
+                        {% if dev.employee.image %}
+                            <img src="{{ dev.employee.image.url }}">
+                        {% endif %}
+                    </div>
+                    <div class="emp_detail">
+                        <h2>{{ dev.employee.first_name }} {{ dev.employee.last_name }}
+                            <span class="badge badge-success" style="color: #000000">{{ dev.skil_level }}</span></h2>
+
+                        <ul>
+                            {{ dev.employee.email }}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+    {% endfor %}
+
+
+
+{% endblock %}
+
+{% block filters %}
+ <div id="main" >
+        <button class="openbtn" onclick="openNav()">☰</button>
+    </div>
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <div class="filter_div">
+            {#        <form method="GET">#}
+            {#            <select id="airline-selected" style="background-color: black">#}
+            {#                {% for dev in devs %}#}
+            {#                    <option value="{{ dev.id }}" style="background-color: black">#}
+            {#                        {{ dev.employee.first_name }} {{ dev.employee.last_name }}#}
+            {#                    </option>#}
+            {#                {% endfor %}#}
+            {#            </select>#}
+            {#            <input type="button" value="Update" id="selection-button" method="GET" style="background-color: black">#}
+            {#        </form>#}
+            {#        <form method="GET">#}
+            {#            <select id="airline-selected1" style="background-color: #080808">#}
+            {#                {% for dev in devs %}#}
+            {#                    <option value="{{ dev.technology }}">#}
+            {#                        {{ dev.technology.name }}#}
+            {#                    </option>#}
+            {#                {% endfor %}#}
+            {#            </select>#}
+            {#            <input type="button" value="Update" id="selection-button" method="GET" style="background-color: black">#}
+            {#        </form>#}
+
+
+            <div class="filters_container">
+                <form method="GET">
+                    <p class="filter_title" data-toggle="collapse" href="#CollapseLanguages" role="button">
+                        Languages:</p>
+                    <div class="row" id="CollapseLanguages">
+                        <div class="col-xs-12">
+                            <div class="btn-group btn-group-vertical" data-toggle="buttons">
+                                {% for technology in technologys %}
+                                    <label class="btn">
+                                        <input type="checkbox" name='{{ technology.id }}'><i
+                                            class="fa fa-square-o fa-2x"></i><i
+                                            class="fa fa-check-square-o fa-2x"></i>
+                                        <span> {{ technology.name }}</span>
+                                    </label>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <p class="filter_title" data-toggle="collapse" href="#CollapseFrameworks" role="button">
+                        Frameworks:</p>
+                    <div class="row" id="CollapseFrameworks">
+                        <div class="col-xs-12">
+                            <div class="btn-group btn-group-vertical" data-toggle="buttons">
+                                {% for framework in frameworks %}
+                                    <label class="btn">
+                                        <input type="checkbox" name='{{ framework.id }}'><i
+                                            class="fa fa-square-o fa-2x"></i><i
+                                            class="fa fa-check-square-o fa-2x"></i>
+                                        <span> {{ framework.name }}</span>
+                                    </label>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="filter_title" data-toggle="collapse" href="#CollapseSkills" role="button">Other
+                        Skills:</p>
+                    <div class="row" id="CollapseSkills">
+                        <div class="col-xs-12">
+                            <div class="btn-group btn-group-vertical" data-toggle="buttons">
+                                {% for other in others %}
+                                    <label class="btn">
+                                        <input type="checkbox" name='{{ other.id }}'><i
+                                            class="fa fa-square-o fa-2x"></i><i
+                                            class="fa fa-check-square-o fa-2x"></i> <span> {{ other.name }}</span>
+                                    </label>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "0px";
+            document.getElementById("main").style.marginTop = "0px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+        }
+
+         $( "#{{ technology.id }}" ).click(function(event) {
+            event.preventDefault();
+            var filters = $('#mySidebar').find(":selected").val();
+
+            $.ajax({
+                url: "{% url 'emp' %}",
+                method: 'GET',
+                filter_category: parseInt(filters),
+                success: function(data){
+                console.log(data)
+         },
+                error: function(error_data){
+                console.log("error")
+                console.log(error_data)
+         }
+            })
+        });
+
+
+    </script>
+
+{% endblock %}

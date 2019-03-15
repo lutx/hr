@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+<style>
+    {% block style %}
+        {{ block.super }}
+        .jumbotron {
+            margin-top: 80px;
+            background-color: #27a4ee !important;
+        }
+    {% endblock %}
+</style>
+
+{% block jumbotron_content %}
+
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-sm-6">
+
+                <h1>BISON AGENCY</h1>
+                <p class="lead">TEAM</p>
+{#                <a class="btn btn-lg btn-primary" href="{% url 'employee' %}" role="button">DEV</a>#}
+            </div>
+            <div class="col-sm-6">
+
+                {% include 'slider.html' %}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

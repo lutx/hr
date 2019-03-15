@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <script src="https://use.fontawesome.com/1598e5e6aa.js"></script>
+
+
+    <meta charset="UTF-8">
+    <title>{% block title %} HR Bison
+    {% endblock %}</title>
+
+    {% include 'bootstrap_css.html' %}
+
+    <style>
+        {% block style %}
+            .navbar-inverse {
+                background-color: #d42222;
+                position: fixed;
+                top: 0;
+                right: 0;
+                left: 0;
+                z-index: 1030;
+            }
+        {% endblock %}
+    </style>
+
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css">
+</head>
+<body>
+{% include 'navbar.html' %}
+
+
+<div class="container">
+
+    {% block jumbotron_content %}
+
+    {% endblock %}
+
+    <div id="content">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+
+
+</div>
+ <div class="filters">
+        {% block filters %}
+
+        {% endblock %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,182 @@
+body {
+
+    background-color: #000000 !important;
+}
+
+.jumbotron {
+    margin-top: 80px;
+    background-color: #e02727;
+}
+
+.admin_link {
+    float: right;
+    margin-right: 5px;
+    margin-top: 15px;
+
+}
+
+.filters {
+
+    margin-left: 0px;
+    margin-top: 80px;
+    position: fixed;
+    color: chartreuse;
+
+}
+
+.filter_div {
+    background-color: #080808;
+    /*border-style:*/
+    /*border-color: red;*/
+    border: 1px solid chartreuse;
+    border-radius: 5px;
+}
+.filters_container{
+
+}
+.filter_title{
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+
+label.btn span {
+  font-size: 1.5em ;
+}
+
+label input[type="radio"] ~ i.fa.fa-circle-o{
+    color: #c8c8c8;    display: inline;
+}
+label input[type="radio"] ~ i.fa.fa-dot-circle-o{
+    display: none;
+}
+label input[type="radio"]:checked ~ i.fa.fa-circle-o{
+    display: none;
+}
+label input[type="radio"]:checked ~ i.fa.fa-dot-circle-o{
+    color: #7AA3CC;    display: inline;
+}
+label:hover input[type="radio"] ~ i.fa {
+color: #7AA3CC;
+}
+
+label input[type="checkbox"] ~ i.fa.fa-square-o{
+    color: #c8c8c8;    display: inline;
+}
+label input[type="checkbox"] ~ i.fa.fa-check-square-o{
+    display: none;
+}
+label input[type="checkbox"]:checked ~ i.fa.fa-square-o{
+    display: none;
+}
+label input[type="checkbox"]:checked ~ i.fa.fa-check-square-o{
+    color: #36cc0d;    display: inline;
+}
+label:hover input[type="checkbox"] ~ i.fa {
+color: #7AA3CC;
+}
+
+div[data-toggle="buttons"] label.active{
+    color: #7AA3CC;
+}
+
+div[data-toggle="buttons"] label {
+display: inline-block;
+padding: 3px 12px;
+margin-bottom: 0;
+font-size: 9px;
+font-weight: normal;
+line-height: 2em;
+text-align: left;
+white-space: nowrap;
+vertical-align: top;
+cursor: pointer;
+/*background-color: none;*/
+border: 0px solid
+#c8c8c8;
+border-radius: 3px;
+color: #c8c8c8;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+-o-user-select: none;
+user-select: none;
+}
+
+div[data-toggle="buttons"] label:hover {
+color: #7AA3CC;
+}
+
+div[data-toggle="buttons"] label:active, div[data-toggle="buttons"] label.active {
+-webkit-box-shadow: none;
+box-shadow: none;
+}
+
+
+
+.sidebar {
+  margin-top: 40px;
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #000000;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #ff0312;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 15px;
+  font-size: 36px;
+  margin-left: 50px;
+  color: #ffebf8;
+}
+
+.openbtn {
+  font-size: 15px;
+  margin-top: 0px;
+  cursor: pointer;
+  background-color: #000000;
+  color: #74ff00;
+  padding: 10px 10px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+.main{
+    margin-top: 0px;
+}
+#main {
+  transition: margin-left .5s;
+
+  padding: 0px;
+  border-bottom-color: chartreuse;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+
+
